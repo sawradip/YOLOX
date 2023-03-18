@@ -6,7 +6,8 @@ import ast
 import pprint
 from abc import ABCMeta, abstractmethod
 from typing import Dict, List, Tuple
-from tabulate import tabulate
+import pandas as pd
+# from tabulate import tabulate
 
 import torch
 from torch.nn import Module
@@ -63,7 +64,8 @@ class BaseExp(metaclass=ABCMeta):
             for k, v in vars(self).items()
             if not k.startswith("_")
         ]
-        return tabulate(exp_table, headers=table_header, tablefmt="fancy_grid")
+        # return tabulate(exp_table, headers=table_header, tablefmt="fancy_grid")
+        return pd.DataFrame(exp_table, index=table_header)
 
     def merge(self, cfg_list):
         assert len(cfg_list) % 2 == 0
