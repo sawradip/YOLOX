@@ -65,7 +65,7 @@ class BaseExp(metaclass=ABCMeta):
             if not k.startswith("_")
         ]
         # return tabulate(exp_table, headers=table_header, tablefmt="fancy_grid")
-        return pd.DataFrame(exp_table, index=table_header)
+        return pd.DataFrame(exp_table, columns=table_header)
 
     def merge(self, cfg_list):
         assert len(cfg_list) % 2 == 0
